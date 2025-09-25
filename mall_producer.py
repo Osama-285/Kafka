@@ -23,3 +23,11 @@ SHOP_TYPES = [
     "Jewelry", "Toys", "Cosmetics", "Sports", "Books",
     "HomeDecor", "Cinema", "Pharmacy"
 ]
+
+def random_date(start_year=2011):
+    start = datetime(start_year, 1, 1)
+    now = datetime.now()
+    delta = now - start
+    random_days = random.randint(0, delta.days)
+    random_time = timedelta(seconds=random.randint(0, 86400))
+    return (start + timedelta(days=random_days) + random_time).isoformat()
