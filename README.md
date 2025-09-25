@@ -5,6 +5,9 @@ To Cheack List of Brockers:
 command 1: docker exec -it <broker_container_name> bash
 command 2: kafka-topics --bootstrap-server localhost:PORT --list
 
-To Create New Broker:
+To Create New Topic:
 docker exec -it <broker_container_name> kafka-topics --create   --topic <Topic Name>   --bootstrap-server localhost:9094   
 --partitions 3   --replication-factor 1
+
+To Delete a Broker:
+docker exec -it <broker_container_name> kafka-topics --delete --topic <Topic Name> --bootstrap-server localhost:9094                                      
