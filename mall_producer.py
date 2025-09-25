@@ -44,3 +44,23 @@ def create_transaction():
         "shop_type": random.choice(SHOP_TYPES)
     }
     return floor, transaction
+
+def delivery_report(err, msg):
+    if err is not None:
+        print(f"Delivery failed: {err}")
+    else:
+        print(f"Delivered to {msg.topic()} [{msg.partition()}]")
+
+
+while True:
+    for _ in range(100):
+        floor, txn = create_transaction()
+        topic = FLOOR_TOPICS[floor]
+        producer.produce(
+            topic,
+            key=str(txn["shop_number"]),
+            value=json.dumps(txn),
+            callback=delivery_report
+        )
+    producer.flush()
+    time.sleep(1)
