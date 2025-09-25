@@ -31,3 +31,16 @@ def random_date(start_year=2011):
     random_days = random.randint(0, delta.days)
     random_time = timedelta(seconds=random.randint(0, 86400))
     return (start + timedelta(days=random_days) + random_time).isoformat()
+
+def create_transaction():
+    floor = random.randint(1, 5)
+    shop = random.randint(1, 200)
+    transaction = {
+        "floor_number": floor,
+        "shop_number": shop,
+        "transaction_id": f"txn-{random.randint(100000, 999999)}",
+        "transaction_amount": round(random.uniform(5, 2000), 2),
+        "transaction_date": random_date(),
+        "shop_type": random.choice(SHOP_TYPES)
+    }
+    return floor, transaction
