@@ -80,7 +80,7 @@ import json
 from datetime import datetime, timedelta
 from collections import defaultdict, deque
 
-bootstrap_servers = 'localhost:9092'  # Use 'broker:9092' if inside Docker
+bootstrap_servers = 'localhost:9092'  
 topic_name = 'transactions'
 group_id = 'fraud-detector-group'
 
